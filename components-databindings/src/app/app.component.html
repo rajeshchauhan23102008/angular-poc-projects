@@ -1,0 +1,22 @@
+<div class="container">
+  <p>This is App Component Paragraph!!!</p>
+  <label > App Component - Label</label>
+  <app-cockpit (cockpitServerAdded)="OnServerBlueprintAdded($event)"
+            (cockpitBlueprintAdded)="OnServerBlueprintAdded($event)"></app-cockpit>
+
+  <button class="btn btn-primary" (click)="OnFirstElementChange()">Change First Element!!</button>
+  <button class="btn btn-danger" (click)="OnFirstElementDelete()">Delete First Element!!!</button>
+  <hr>
+  <div class="row">
+    <div class="col-12">
+      <app-server-element 
+      [srvElement]="server"
+      [name]="server.name" 
+      *ngFor="let server of servers">
+        <p #serverContent *ngIf="server.type === 'server'" class="card-text font-weight-bold text-primary">{{ server.content }}</p>
+        <p *ngIf="server.type === 'blueprint'" class="card-text font-italic text-danger">{{ server.content }}</p>
+      </app-server-element>
+    </div>
+  </div>
+  
+</div>

@@ -1,0 +1,29 @@
+<div class="row mt-4">
+    <div class="col-12">
+        <p>This is COCKPIT Component Paragraph!!!</p>
+        <label>COCKPIT Component - Label</label>
+        <h6 class="text-primary">Add new server or its blueprint!!!</h6>
+
+        <form #addServerForm="ngForm">
+
+            <div class="form-group">
+                <label for="serverName" class="font-weight-bold">Server Name</label>
+                <!-- <input type="text" class="form-control" id="serverName" name="serverName" [(ngModel)]="server.name"> -->
+                <input #serverNameInput type="text" class="form-control" id="serverName" name="serverName">
+            </div>
+            <div class="form-group">
+                <label for="serverContent" class="font-weight-bold">Server Content</label>
+                <!-- <input type="text" class="form-control" id="serverContent" name="serverContent" [(ngModel)]="server.content"> -->
+                <input #serverContentInput type="text" class="form-control" id="serverContent" name="serverContent">
+            </div>
+
+            <div class="form-group">
+                <!-- <button class="btn btn-primary mr-3" (click)="addServer()">Add Server</button>
+                <button class="btn btn-primary" (click)="addBlueprint()">Add Server Blueprint</button> -->
+                <button class="btn btn-primary mr-3" (click)="addServer(serverNameInput)">Add Server</button>
+                <button class="btn btn-primary" (click)="addBlueprint(serverNameInput)">Add Server Blueprint</button>
+            </div>
+
+        </form>
+    </div>
+</div>
