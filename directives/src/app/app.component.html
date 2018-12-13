@@ -1,5 +1,14 @@
 <div class="container mt-3">
   <div class="row">
+    <div class="col-12">
+      <p appBasicHighlighter>This is the basic highlighter directive that 
+                              change the background color. </p>
+      <p appBetterHighlighter> This is the BETTER highlighter direcive that
+                              change the background color.
+      </p>                              
+    </div>
+  </div>
+  <div class="row">
     <div class="col-6 mt-5">
       <h4>Number List</h4>
       <ul class="list-group">
@@ -17,12 +26,16 @@
         <h4 *ngIf="!oddNumber">Even Numbers</h4>
         <ul *ngFor="let number of numbers" class="list-group">
           <div *ngIf="oddNumber">
-            <li *ngIf="number % 2 != 0" class="list-group-item">
+            <li *ngIf="number % 2 != 0" class="list-group-item" 
+                [ngClass]="{bgodd: number % 2 !==0 }"
+                [ngStyle]="{'font-size': number % 3 !==0 ? '200%' : '100%'}">
               {{ number }}
             </li>
           </div>
           <div *ngIf="!oddNumber">
-            <li *ngIf="number % 2 === 0" class="list-group-item">
+            <li *ngIf="number % 2 === 0" class="list-group-item"
+                [ngClass]="{bgeven: number % 2 ===0}"
+                [ngStyle]="{'font-size': number % 3 ===0 ? '400%' : '100%'}">
               {{ number }}
             </li>
           </div>
