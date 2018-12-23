@@ -1,11 +1,29 @@
 <div class="container mt-3">
+
   <div class="row">
     <div class="col-12">
-      <p appBasicHighlighter>This is the basic highlighter directive that 
-                              change the background color. </p>
-      <p appBetterHighlighter> This is the BETTER highlighter direcive that
+      <ul [ngSwitch]="value">
+        <li *ngSwitchCase="5">Value 5</li>
+        <li *ngSwitchCase="20">Value 20</li>
+        <li *ngSwitchCase="50">Value 50</li>
+        <li *ngSwitchCase="100">Value 100</li>
+        <li *ngSwitchDefault>Value Default</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p appBasicHighlighter>This is the basic highlighter directive that
+        change the background color. </p>
+      <p appBetterHighlighter > This is the BETTER highlighter direcive that
                               change the background color.
       </p>                              
+      <!-- <p appBetterHighlighter [defaultColor]="'green'" [highlighterColor]="'brown'"> This is the BETTER highlighter direcive that
+        change the background color.
+      </p> -->
+      <p [appBetterHighlighter]="'brown'" defaultColor="green"> This is the BETTER highlighter direcive that
+        change the background color.
+      </p>
     </div>
   </div>
   <div class="row">
@@ -26,16 +44,24 @@
         <h4 *ngIf="!oddNumber">Even Numbers</h4>
         <ul *ngFor="let number of numbers" class="list-group">
           <div *ngIf="oddNumber">
-            <li *ngIf="number % 2 != 0" class="list-group-item" 
-                [ngClass]="{bgodd: number % 2 !==0 }"
-                [ngStyle]="{'font-size': number % 3 !==0 ? '200%' : '100%'}">
+            <li *ngIf="number % 2 != 0" class="list-group-item" [ngClass]="{bgodd: number % 2 !==0 }" [ngStyle]="{'font-size': number % 3 !==0 ? '200%' : '100%'}">
               {{ number }}
             </li>
           </div>
-          <div *ngIf="!oddNumber">
-            <li *ngIf="number % 2 === 0" class="list-group-item"
-                [ngClass]="{bgeven: number % 2 ===0}"
-                [ngStyle]="{'font-size': number % 3 ===0 ? '400%' : '100%'}">
+          <!-- <ng-template [ngIf]="!oddNumber">
+          <div >
+            <li *ngIf="number % 2 === 0" class="list-group-item" [ngClass]="{bgeven: number % 2 ===0}" [ngStyle]="{'font-size': number % 3 ===0 ? '400%' : '100%'}">
+              {{ number }}
+            </li>
+          </div>
+        </ng-template> -->
+          <!-- <div *ngIf="!oddNumber">
+            <li *ngIf="number % 2 === 0" class="list-group-item" [ngClass]="{bgeven: number % 2 ===0}" [ngStyle]="{'font-size': number % 3 ===0 ? '400%' : '100%'}">
+              {{ number }}
+            </li>
+          </div> -->
+          <div *appUnless="oddNumber">
+            <li *ngIf="number % 2 === 0" class="list-group-item" [ngClass]="{bgeven: number % 2 ===0}" [ngStyle]="{'font-size': number % 3 ===0 ? '400%' : '100%'}">
               {{ number }}
             </li>
           </div>

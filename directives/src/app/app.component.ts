@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
   numbers: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   oddNumber: boolean = true;
   numberText: string;
+  value: string = '100';
 
   @ViewChild('numberTogglerButton') numberTogglerButton: ElementRef;
 
