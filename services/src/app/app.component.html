@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div>
+        <app-newaccount></app-newaccount>
+      </div>
+      <div>
+        <app-account 
+          *ngFor="let account of accounts; let i = index;" 
+          [account]="account" 
+          [index]="i"
+          >
+        </app-account>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div>
+        <app-newaccount (onNewAccountCreation)="onNewAccountCreation($event)"></app-newaccount>
+      </div>
+      <div>
+        <app-account 
+          *ngFor="let account of accounts; let i = index;" 
+          [account]="account" 
+          [index]="i"
+          (onAccountStatusUpdated)="onAccountStatusUpdated($event)">
+        </app-account>
+      </div>
+    </div>
+  </div>
+</div> -->
