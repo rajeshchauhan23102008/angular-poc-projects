@@ -1,0 +1,10 @@
+<div class="row m-2">
+    <div class="col-12">
+        <h3>Active Users</h3>
+        <h5>Action Counter ({{ activeActionCounter }})</h5>
+        <ul class="list-group" *ngFor="let user of activeUsers; let i = index;">
+            <li class="list-group-item">{{ user }} | <button type="button" class="btn btn-link" (click)="deactivateUser(i);">add
+                    to inactive list</button></li>
+        </ul>
+    </div>
+</div>
