@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentChecked } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../_services/user.service';
 import { CounterService } from '../../_services/counter.service';
 
@@ -6,7 +6,7 @@ import { CounterService } from '../../_services/counter.service';
     selector: 'app-inactive-users',
     templateUrl: './inactive-users.component.html'
 })
-export class InactiveUsersComponent implements OnInit, AfterContentChecked {
+export class InactiveUsersComponent implements OnInit {
 
     inactiveUsers: string[];
     inactiveActionCounter: number;
@@ -15,9 +15,6 @@ export class InactiveUsersComponent implements OnInit, AfterContentChecked {
 
     ngOnInit() {
         this.inactiveUsers = this.userService.inactiveUsers;
-    }
-
-    ngAfterContentChecked() {
         this.inactiveActionCounter = this.counterService.inactiveCounter;
     }
 

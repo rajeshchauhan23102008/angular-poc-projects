@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentChecked } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../_services/user.service';
 import { CounterService } from '../../_services/counter.service';
 
@@ -6,7 +6,7 @@ import { CounterService } from '../../_services/counter.service';
     selector: 'app-active-users',
     templateUrl: './active-users.component.html'
 })
-export class ActiveUsersComponent implements OnInit, AfterContentChecked {
+export class ActiveUsersComponent implements OnInit {
     activeUsers: string[];
     activeActionCounter: number;
 
@@ -14,17 +14,6 @@ export class ActiveUsersComponent implements OnInit, AfterContentChecked {
 
     ngOnInit() {
         this.activeUsers = this.userService.activeUsers;
-    }
-
-    // ngDoCheck() {
-    //     this.activeActionCounter = this.counterService.activeCounter;
-    // }
-
-    // ngAfterContentChecked() {
-    //     this.activeActionCounter = this.counterService.activeCounter;
-    // }
-
-    ngAfterContentChecked() {
         this.activeActionCounter = this.counterService.activeCounter;
     }
 
