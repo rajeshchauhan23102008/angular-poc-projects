@@ -1,0 +1,17 @@
+<div class="row m-1">
+    <div class="col-sm-6">
+        <div>
+            <ul class="form-group">
+                <li class="form-control" *ngFor="let user of users">
+                    {{ user.name }}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <!-- <a routerLink='users'>Reload This Page!!!</a> -->
+        <!-- <a routerLink='/users'>Reload This Page!!!</a> -->
+        <a routerLink='../users'>Reload This Page!!!</a>
+        <app-user></app-user>
+    </div>
+</div>

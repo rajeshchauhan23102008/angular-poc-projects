@@ -1,0 +1,46 @@
+<div class="container m-1">
+  <div class="row">
+    <div class="col-sm-12">
+      <!-- <tabset>
+        <tab heading="Home" >
+          <app-home></app-home>
+        </tab>
+        <tab heading="Servers">
+          <app-servers></app-servers>
+        </tab>
+        <tab heading="Users">
+          <app-users></app-users>
+        </tab>
+      </tabset> -->
+      <ul class="nav nav-tabs" role="routingdemo">
+        <li class="nav-item">
+          <a routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" role="routingdemo">Home</a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/users']" class="nav-link" routerLinkActive="active" role="routingdemo">Users</a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="'/servers'" class="nav-link" routerLinkActive="active" role="routingdemo">Servers</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <router-outlet></router-outlet>
+      <!-- <div><a href="#"><app-home></app-home></a></div>
+      <div><a href="#"><app-servers></app-servers></a></div>
+      <div><a href="#"><app-users></app-users></a></div> -->
+
+      <!-- <div>
+        <app-home></app-home>
+      </div>
+      <div>
+        <app-servers></app-servers>
+      </div>
+      <div>
+        <app-users></app-users>
+      </div>
+    </div> -->
+  </div>
+</div>
