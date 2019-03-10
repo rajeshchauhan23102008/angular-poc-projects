@@ -3,15 +3,16 @@
         <div>
             <ul class="form-group">
                 <li class="form-control" *ngFor="let user of users">
-                    {{ user.name }}
+                    <a [routerLink]="['/users', user.id, user.name]">{{ user.name }}</a>
                 </li>
             </ul>
         </div>
     </div>
     <div class="col-sm-6">
-        <!-- <a routerLink='users'>Reload This Page!!!</a> -->
-        <!-- <a routerLink='/users'>Reload This Page!!!</a> -->
+        <router-outlet></router-outlet>
+        <!-- <a routerLink='users'>Reload This Page!!!</a>
+        <a routerLink='/users'>Reload This Page!!!</a>
         <a routerLink='../users'>Reload This Page!!!</a>
-        <app-user></app-user>
+        <app-user></app-user> -->
     </div>
 </div>

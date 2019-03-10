@@ -12,12 +12,23 @@ import { UserComponent } from './users/user/user.component';
 import { ServersComponent } from './servers/servers.component';
 import { ServerComponent } from './servers/server/server.component';
 import { ServerEditComponent } from './servers/server-edit/server-edit.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'users', component: UsersComponent },
-  { path: 'users/:id/:name', component: UserComponent },
-  { path: 'servers', component: ServersComponent }
+  {
+    path: 'users', component: UsersComponent, children: [
+      { path: ':id/:name', component: UserComponent }
+    ]
+  },
+  {
+    path: 'servers', component: ServersComponent, children: [
+      { path: ':id', component: ServerComponent },
+      { path: ':id/edit', component: ServerEditComponent }
+    ]
+  },
+  { path: 'pagenotfound', component: PageNotFoundComponent },
+  { path: '**', redirectTo: '/pagenotfound' }
 ];
 
 @NgModule({
@@ -28,7 +39,8 @@ const routes: Routes = [
     UserComponent,
     ServersComponent,
     ServerComponent,
-    ServerEditComponent
+    ServerEditComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

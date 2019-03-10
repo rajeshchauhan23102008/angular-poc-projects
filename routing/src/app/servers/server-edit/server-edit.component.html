@@ -1,9 +1,14 @@
-<div class="row m-1">
+
+<div *ngIf="!allowEdit">
+    <h2>You are not Allowed to edit this server!!!</h2>
+</div>
+<div class="row m-1" *ngIf="allowEdit">
     <div class="col-sm-12">
-        <div >
+        <div>
             <div class="form-group">
                 <label for="name">Server Name</label>
-                <input type="text" name="name" class="form-control" placeholder="Enter Server Name" [(ngModel)]='server.name'>
+                <input type="text" name="name" class="form-control" placeholder="Enter Server Name"
+                    [(ngModel)]='server.name'>
             </div>
             <div class="form-group">
                 <label for="status">Server Status</label>
@@ -12,7 +17,7 @@
                     <option value="Offline">OFFLINE</option>
                 </select>
             </div>
-            <button class="btn btn-primary" (click) = "onServerStatusUpdate();">Update Server Status</button>
+            <button class="btn btn-primary" (click)="onServerUpdate();">Update Server Status</button>
         </div>
     </div>
 </div>

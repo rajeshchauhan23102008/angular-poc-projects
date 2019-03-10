@@ -10,7 +10,7 @@ import { ServersService } from '../_services/servers.service';
 
 export class ServersComponent implements OnInit {
 
-    servers: {}[];
+    servers: {id: number, name: string, status: string}[] = [];
 
     constructor(private serversService: ServersService, private router: Router, private routes: ActivatedRoute) {
 

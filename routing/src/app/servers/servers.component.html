@@ -1,15 +1,18 @@
 <div class="row m-1">
     <div class="col-sm-6">
         <ul class="form-group">
-           <li class="form-control" *ngFor="let server of servers">
-               {{ server.name }}
-           </li> 
+            <li class="form-control" *ngFor="let server of servers">
+                <a [routerLink]="['/servers', server.id]"
+                    [queryParams]="{ 'mode': server.id === 102 ? 'edit' : 'noedit' }"
+                    fragment="loading">{{ server.name }}</a>
+            </li>
         </ul>
     </div>
     <div class="col-sm-6">
-        <button class="btn btn-primary" (click)="reloadServers()">Reload Servers!!!</button>
+        <router-outlet></router-outlet>
+        <!-- <button class="btn btn-primary" (click)="reloadServers()">Reload Servers!!!</button>
         <app-server-edit></app-server-edit>
-        <app-server></app-server>
+        <app-server></app-server> -->
     </div>
 
 </div>

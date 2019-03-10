@@ -10,7 +10,11 @@ export class HomeComponent {
 
     constructor(private router: Router) { }
 
-    loadServers(){
+    loadServers() {
         this.router.navigate(['/servers']);
+    }
+
+    loadServer(id: number) {
+        this.router.navigate(['/servers', id, 'edit'], { queryParams: { allowedit: 'true', mode: 'off' }, fragment: 'newLoad' });
     }
 }

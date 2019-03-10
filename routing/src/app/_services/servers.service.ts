@@ -1,25 +1,32 @@
 export class ServersService {
-    servers: { name: string, status: string }[] = [
-        { name: 'Production', status: 'Online' },
-        { name: 'QA', status: 'Online' },
-        { name: 'Dev', status: 'Offline' }
+    servers: { id: number, name: string, status: string }[] = [
+        { id: 100, name: 'Production', status: 'Online' },
+        { id: 101, name: 'QA', status: 'Online' },
+        { id: 102, name: 'Dev', status: 'Offline' }
     ];
 
     getServers() {
         return this.servers.slice();
     }
 
-    updateServerStatus(name: string, newStatus: string) {
+    getServer(id: number) {
+        const server = this.servers.find((s) => {
+            return s.id === id;
+        });
 
-        for (let server of this.servers) {
-            //Find Server.
-            if (server.name === name) {
-                //Update Status.
+        return server;
+    }
 
-                server.status = newStatus;
+    updateServerStatus(serverInput: { id: number, name: string, status: string }) {
 
-                break;
-            }
+        const server = this.servers.find(
+            (s) => {
+                return s.id === serverInput.id;
+            });
+
+        if (server) {
+            server.name = serverInput.name;
+            server.status = serverInput.status;
         }
     }
 }
