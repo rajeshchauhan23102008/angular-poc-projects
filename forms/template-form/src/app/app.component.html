@@ -60,6 +60,17 @@
     </div>
 
   </div>
+  <div class="row" *ngIf="isFormSubmitted">
+    <div class="col">
+      <h3>Your Data</h3>
+      <hr>
+      <p>Username: {{ formData.username }}</p>
+      <p>Email: {{ formData.email }}</p>
+      <p>Secret Question: {{ formData.secretQuestion }}</p>
+      <p>Answer: {{ formData.answer }}</p>
+      <p>Gender: {{ formData.gender }}</p>
+    </div>
+  </div>
 </div>
 
 
