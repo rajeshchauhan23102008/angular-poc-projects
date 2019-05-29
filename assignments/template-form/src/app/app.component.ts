@@ -33,7 +33,7 @@ export class AppComponent {
         password: this.myForm.value.password
       };
 
-      console.log(this.user);
+      console.log(this.myForm.value);
 
       // reset form with default values.
       this.myForm.reset({

@@ -17,17 +17,17 @@
       <form #myForm="ngForm" (ngSubmit)="submit()">
 
         <div *ngIf="!myForm.valid && myForm.touched">
-          <p class="validation">Please fill complete form with correct values.</p>
+          <p class="text-danger">Please fill complete form with correct values.</p>
         </div>
         <div class="form-group">
           <label for="email">Email</label>
           <input type="email" #email="ngModel" email required ngModel class="form-control" name="email">
-          <p class="validation" *ngIf="!email.valid && email.touched">Invalid Email Address.</p>
+          <p class="text-danger" *ngIf="!email.valid && email.touched">Invalid Email Address.</p>
         </div>
 
         <div class="form-group">
           <label for="subscription">Subscriptions</label>
-          <select name="subscription" [(ngModel)]="selectedSubscription" class="form-control">
+          <select name="subscription" [ngModel]="selectedSubscription" class="form-control">
             <option *ngFor="let subscription of subscriptions" [value]="subscription.value">{{ subscription.display }}
             </option>
 
@@ -38,7 +38,7 @@
         <div class="form-group">
           <label for="password">Password</label>
           <input type="password" #password="ngModel" required ngModel name="password" class="form-control">
-          <p class="validation" *ngIf="!password.valid && password.touched">Enter valid password</p>
+          <p class="text-danger" *ngIf="!password.valid && password.touched">Enter valid password</p>
         </div>
 
         <button class="btn btn-primary" [disabled]="!myForm.valid">Submit</button>
