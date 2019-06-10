@@ -1,0 +1,53 @@
+<!--
+          Create a Form with the following Controls and Validators
+          1) Project Name (should not be empty)
+          2) Mail (should not be a empty and a valid email)
+          3) Project Status Dropdown, with three values: 'Stable', 'Critical', 'Finished'
+          4) Submit Button
+
+          Add your own Validator which doesn't allow "Test" as a Project Name
+
+          Also implement that Validator as an async Validator (replace the other one)
+
+          Upon submitting the form, simply print the value to the console
+      -->
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <form [formGroup]="projectEntryForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="projectName">Project Name</label>
+          <input type="text" class="form-control" formControlName="projectName">
+          <div class="alert-danger"
+            *ngIf="!projectEntryForm.get('projectName').valid && projectEntryForm.get('projectName').touched">
+            <span *ngIf="projectEntryForm.get('projectName').hasError('required')">Project
+              Name
+              should not be Empty.</span>
+            <span *ngIf="projectEntryForm.get('projectName').hasError('forbiddenProjectName')">Fobidden
+              Project Name.</span>
+          </div>
+
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" class="form-control" formControlName="email">
+          <div class="alert-danger"
+            *ngIf="!projectEntryForm.get('email').valid && projectEntryForm.get('email').touched">
+            <span *ngIf="projectEntryForm.get('email').hasError('required')">Email should not be
+              Empty</span>
+            <span *ngIf=" projectEntryForm.get('email').hasError('email')">Invalid Email Id</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="status">Project Status</label>
+          <select formControlName="projectStatus" class="form-control">
+            <option *ngFor="let item of status" class="form-control-item" [value]="item.value">{{ item.display }}
+            </option>
+          </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

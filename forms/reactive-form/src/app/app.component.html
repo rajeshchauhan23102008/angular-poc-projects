@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="col">
+      <form [formGroup]="signupForm" (ngSubmit)="onSignupFormSubmit()">
+        <div formGroupName="userData">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" formControlName="username" class="form-control">
+            <span class="text-danger"
+              *ngIf="!signupForm.get('userData.username').valid && signupForm.get('userData.username').touched">
+
+              <span *ngIf="signupForm.get('userData.username').errors['required']">Username cannot be left
+                blank!!!</span>
+              <span *ngIf="signupForm.get('userData.username').errors['forbiddenUsername']">Cannot enter Forbidden
+                Username!!!</span>
+            </span>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" formControlName="email" class="form-control">
+            <span class="text-danger"
+              *ngIf="!signupForm.get('userData.email').valid && signupForm.get('userData.email').touched">
+              <span *ngIf="signupForm.get('userData.email').errors['required']">Email Cannot be left blank!!!</span>
+              <span *ngIf="signupForm.get('userData.email').errors['forbiddenEmail']">Cannot enter forbidden
+                Email</span>
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender</label>
+          <div class="radio" *ngFor="let gender of genders">
+            <label>
+              <input type="radio" formControlName="gender" [value]="gender.value">
+              {{ gender.display }}
+            </label>
+          </div>
+        </div>
+        <div formArrayName="hobbies">
+          <button class="btn btn-primary" (click)="AddNewHobby()">Add Your Hobbies</button>
+          <div class="form-group" *ngFor="let hobbyControl of signupForm.get('hobbies').controls; let i = index;">
+            <input type="text" [formControlName]="i" class="form-control">
+          </div>
+        </div>
+        <span class="text-danger" *ngIf="!signupForm.valid && signupForm.touched">Valid data required for
+          Form!!!</span><br>
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <button class="btn btn-secondary" (click)="onReset()">Reset</button>
+      </form>
+    </div>
+  </div>
+</div>
