@@ -16,7 +16,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { CustomValidators } from './custom-validator';
 
 @Component({
   selector: 'app-root',
@@ -42,44 +42,32 @@ export class AppComponent implements OnInit {
 
     // create form.
     this.projectEntryForm = new FormGroup({
-      'projectName': new FormControl(null, Validators.required, this.forbiddenProjectNameCheckAsync),
+      'projectName': new FormControl(null, [Validators.required, CustomValidators.forbiddenProjectNameCheck]
+        , CustomValidators.forbiddenProjectNameCheckAsync),
       'email': new FormControl(null, [Validators.required, Validators.email]),
       'projectStatus': new FormControl('stable')
     });
 
+    //this.observableTest();
   }
 
-  forbiddenProjectNameCheckAsync(formControl: FormControl): Promise<any> | Observable<any> {
+  // observableTest() {
 
-    const forbiddenProjectNames = ['Test', 'test', 'xyz'];
+  //   console.log("- Creating observable");
+  //   const observable = new Observable(observer => {
+  //     console.log("- Observable running");
+  //     observer.next(1);
+  //   });
+  //   console.log("- Registering handler");
+  //   observable.subscribe(v => {
+  //     setTimeout(() => {
+  //       console.log("- Handling result: " + v)
+  //     }, 3000);
+  //   });
 
-    const promiseToReturn = new Promise(
-      (resolve, reject) => {
+  //   console.log("- Exiting main");
+  // }
 
-        setTimeout(() => {
-          if (forbiddenProjectNames.indexOf(formControl.value) !== -1) {
-            resolve({ 'forbiddenProjectName': true });
-          }
 
-          resolve(null);
-
-        }, 2000);
-      });
-
-    return promiseToReturn;
-
-  }
-
-  forbiddenProjectNameCheck(formControl: FormControl): { [key: string]: boolean } {
-
-    const forbiddenProjectNames = ['Test', 'test', 'xyz'];
-
-    if (forbiddenProjectNames.indexOf(formControl.value) !== -1) {
-      return ({ 'forbiddenProjectName': true });
-    }
-
-    return null;
-
-  }
 
 }
