@@ -1,0 +1,58 @@
+<div class="container m-3">
+  <div class="row">
+    <div class="col">
+      <strong>Search By :</strong>
+      <select class="form-control" [(ngModel)]="filterType">
+        <option value="status">Status</option>
+        <option value="size">Size</option>
+      </select>
+      <br>
+      <input [(ngModel)]="filterInput" class="form-control" type="text" placeholder="Enter filter input here...">
+      <br>
+      <button class="btn btn-primary" (click)="onAddServer()">Add New Server</button>
+      <br><br>
+      <h1>App Status : {{ appStatus | async }}</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <strong>Sort By :</strong>
+      <select class="form-control" [(ngModel)]="sortBy">
+        <option value="name">Name</option>
+        <option value="size">Size</option>
+        <option value="status">Status</option>
+      </select>
+      <div class="radio">
+        <input type="radio" [(ngModel)]="sortType" value="asc">Ascending
+        <input type="radio" [(ngModel)]="sortType" value="desc">Descending
+      </div>
+    </div>
+    <div class="col-6">
+      <strong>Reverse</strong>
+      <select class="form-control" [(ngModel)]="reverseField">
+        <option value="">Select Reverse Field</option>
+        <option value="name">Name</option>
+        <option value="size">Size</option>
+        <option value="status">Status</option>
+      </select>
+    </div>
+  </div>
+
+  <hr>
+  <div class="row">
+    <div class="col">
+      <ul class="list-group">
+        <li [ngClass]="getCssClass(server.status)" class="list-group-item" 
+          *ngFor="let server of servers | serverFilter: filterInput: filterType
+                                        | sort: sortType : sortBy 
+                                        | reverse: reverseField">
+          <strong>{{ server.name | shorten: 15 }} </strong> |
+          {{ server.size | uppercase }} |
+          {{ server.creationTime | date: 'full' | uppercase }}
+          <span class="badge badge-primary float-right">{{ server.status }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
