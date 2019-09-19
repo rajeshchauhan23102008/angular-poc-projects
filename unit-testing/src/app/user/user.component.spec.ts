@@ -93,7 +93,7 @@ describe('User Component Testing', () => {
 
     }));
 
-    // this test is not working since spyOn is not working.
+    // // this test is not working since spyOn is not working.
     // it('fakeAsync() : should get async data from data service', fakeAsync(() => {
 
     //     const fixture = TestBed.createComponent(UserComponent);

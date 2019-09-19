@@ -1,3 +1,6 @@
+import { Injectable } from '@angular/core';
+
+@Injectable()
 export class DataService {
     getDetails() {
         let promise = new Promise<string>((resolve, reject) => {
